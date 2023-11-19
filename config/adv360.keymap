@@ -2,6 +2,7 @@
 #include <dt-bindings/zmk/backlight.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/rgb.h>
 
 / {
@@ -31,6 +32,16 @@
     };
 
     macros {
+    };
+
+    combos {
+        compatible = "zmk,combos";
+
+        trigger_tri {
+            bindings = <&lt 7 TAB>;
+            key-positions = <65 70>;
+            layers = <4>;
+        };
     };
 
     keymap {
@@ -73,6 +84,46 @@
 &none  &none         &none         &none         &none         &none         &none        &none  &none      &bt BT_CLR  &none       &rgb_ug RGB_MEFS_CMD 5  &none  &none       &none       &none  &none  &none
 &none  &none         &none         &none         &macro_ver    &none                             &none      &none                                           &none  &none       &none       &none  &none  &none
 &none  &none         &none         &none         &none                       &none        &none  &none      &none       &bl BL_TOG  &rgb_ug RGB_TOG                &bl BL_INC  &bl BL_DEC  &none  &none  &none
+            >;
+        };
+
+        sweep_L1 {
+            bindings = <
+&trans  &trans  &trans          &trans              &trans          &trans  &trans                                                          &trans     &trans  &trans           &trans               &trans           &trans         &trans
+&trans  &kp Q   &kp W           &kp E               &kp R           &kp T   &trans                                                          &trans     &kp Y   &kp U            &kp I                &kp O            &kp P          &trans
+&trans  &kp A   &hm LEFT_ALT S  &hm LEFT_CONTROL D  &hm LEFT_GUI F  &kp G   &trans     &trans          &trans      &trans  &trans           &trans     &kp H   &hm RIGHT_GUI J  &hm RIGHT_CONTROL K  &hm RIGHT_ALT L  &kp BACKSPACE  &trans
+&trans  &kp Z   &kp X           &kp C               &kp V           &kp B                              &trans      &trans                              &kp N   &kp M            &kp COMMA            &kp DOT          &kp KP_ENTER   &trans
+&trans  &trans  &trans          &trans              &trans                  &lt 5 TAB  &kp LEFT_SHIFT  &trans      &trans  &kp RIGHT_SHIFT  &lt 6 TAB          &trans           &trans               &trans           &trans         &trans
+            >;
+        };
+
+        sweep_Lright {
+            bindings = <
+&trans  &trans      &trans        &trans           &trans      &trans  &trans                                          &trans  &trans  &trans    &trans     &trans     &trans     &trans
+&trans  &kp N1      &kp N2        &kp N3           &kp N4      &kp N5  &trans                                          &trans  &kp N6  &kp N7    &kp N8     &kp N9     &kp N0     &trans
+&trans  &kp DELETE  &kp CAPSLOCK  &kp PRINTSCREEN  &kp INSERT  &trans  &trans  &trans      &trans      &trans  &trans  &trans  &trans  &kp LEFT  &kp DOWN   &kp UP     &kp RIGHT  &trans
+&trans  &trans      &trans        &trans           &trans      &trans                      &trans      &trans                  &trans  &kp HOME  &kp PG_DN  &kp PG_UP  &kp END    &trans
+&trans  &trans      &trans        &trans           &trans              &trans  &kp ESCAPE  &trans      &trans  &trans  &trans          &trans    &trans     &trans     &trans     &trans
+            >;
+        };
+
+        sweep_Lleft {
+            bindings = <
+&trans  &trans    &trans    &trans    &trans    &trans     &trans                                      &trans  &trans     &trans     &trans     &trans     &trans     &trans
+&trans  &kp EXCL  &kp AT    &kp HASH  &kp DLLR  &kp PRCNT  &trans                                      &trans  &kp CARET  &kp AMPS   &kp ASTRK  &kp GRAVE  &kp TILDE  &trans
+&trans  &kp DQT   &kp LBKT  &kp LBRC  &kp LPAR  &trans     &trans  &trans  &trans      &trans  &trans  &trans  &kp FSLH   &kp MINUS  &kp EQUAL  &kp COLON  &kp SEMI   &trans
+&trans  &kp SQT   &kp RBKT  &kp RBRC  &kp RPAR  &trans                     &trans      &trans                  &kp BSLH   &kp UNDER  &kp PLUS   &kp PIPE   &kp QMARK  &trans
+&trans  &trans    &trans    &trans    &trans               &trans  &trans  &trans      &trans  &trans  &trans             &trans     &trans     &trans     &trans     &trans
+            >;
+        };
+
+        sweep_Ltri {
+            bindings = <
+&trans  &trans  &trans   &trans   &trans   &trans        &trans                                      &trans  &trans        &trans         &trans  &trans        &trans      &trans
+&trans  &kp F1  &kp F2   &kp F3   &kp F4   &bt BT_SEL 0  &trans                                      &trans  &bt BT_SEL 2  &out OUT_TOG   &trans  &kp C_MUTE    &kp C_NEXT  &trans
+&trans  &kp F5  &kp F6   &kp F7   &kp F8   &bt BT_SEL 1  &trans  &trans  &trans      &trans  &trans  &trans  &bt BT_SEL 3  &kp C_BRI_UP   &trans  &kp C_VOL_UP  &kp C_PP    &trans
+&trans  &kp F9  &kp F10  &kp F11  &kp F12  &bt BT_CLR                    &trans      &trans                  &bt BT_SEL 4  &kp C_BRI_DEC  &trans  &kp C_VOL_DN  &kp C_PREV  &trans
+&trans  &trans  &trans   &trans   &trans                 &trans  &trans  &trans      &trans  &trans  &trans                &trans         &trans  &trans        &trans      &trans
             >;
         };
     };
